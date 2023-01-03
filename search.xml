@@ -5,8 +5,8 @@
     
     <entry>
       <title>C26H52的新手村入门心得</title>
-      <link href="/c26h52.github.io/2023/01/02/1/"/>
-      <url>/c26h52.github.io/2023/01/02/1/</url>
+      <link href="/blog/2023/01/02/1/"/>
+      <url>/blog/2023/01/02/1/</url>
       
         <content type="html"><![CDATA[<p>失败总是贯穿人生始终，这就是人生</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;iostream&gt;using namespace std;int main(){    cout&lt;&lt;"Hello CTF"&lt;&lt;endl;    return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="" alt=""></p>]]></content>
       
