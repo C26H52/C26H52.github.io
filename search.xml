@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>C26H52的新手村入门心得</title>
+      <link href="/project/2023/01/02/1/"/>
+      <url>/project/2023/01/02/1/</url>
+      
+        <content type="html"><![CDATA[<p>失败总是贯穿人生始终，这就是人生</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;iostream&gt;using namespace std;int main(){    cout&lt;&lt;"Hello CTF"&lt;&lt;endl;    return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
