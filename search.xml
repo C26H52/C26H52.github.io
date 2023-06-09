@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>高考</title>
+      <link href="/2023/06/08/gao-kao/"/>
+      <url>/2023/06/08/gao-kao/</url>
+      
+        <content type="html"><![CDATA[<p>一年前的高考第一天，2022年6月7日中午，我在宿舍打开了一把三国杀对局，选了个曹操，然后在一局内被闪电劈中三次（“劈中”是指随便翻开一张未知的牌，花色是♠2~9，效果是会对当前角色造成3点伤害）。午睡醒后，我把这事分享给我的舍友，他们告诉我，“你下午考数学肯定要起飞了”</p><p>2022年6月7日下午，我经历了整个高考三天最折磨的两个小时：从第一道数列题开始，六道大题，第二问基本毫无思路，无从下笔。</p><p>虽说“人难我难，我不畏难”，但对未知的东西感到恐惧，是人的天性：可能你苦思冥想也百思不得其解的题，你身边的人电光火石间就能解决，即使你不认为他的实力比你强多少。</p><p>在对考试结果未知的恐慌与焦虑中，我像挤牙膏一般填满了答题卡空白的每个角落。收卷铃打响的那一刻，我松开握着的笔，双手张开，等待着监考老师收齐试卷和答题卡，等待着命运女神审判我的高考。</p><p>——这就是一年前的高考在我的脑海里留下的最深刻的回忆，至于结果，只能说感觉不尽如人意：没有哪科在看到成绩后会发出“哇我这科居然超常发挥了”的惊叹，倒是有的科看完成绩，一直在反思为什么和预期的结果相差了十万八千里。</p><p>对我的成绩满意吗？可能永远也不会满意。时至今日，我也无法忘却我查分时的那种失望，那种感觉就像是你幻想着即将喝到一杯甜甜糯糯的奶茶，结果嘬一口，只尝到了苦瓜汁，心中只剩植物大战僵尸里面僵尸咬到大蒜的苦涩感。</p><p>那我会悔恨当初吗？其实也不会，倒不是说我没感觉到遗憾，正相反，我觉得高考给我留下了无尽的遗憾。但是悔恨感和遗憾感是虚浮的，是无力的，是无法指导我们解决现实问题的。记得王安石在游览完褒禅山后，提笔写下一句“尽吾志也而不能至者，可以无悔矣，其孰能讥之乎”。是的，可以说我或许再努力些，故事的结局会截然不同。但或许，在千千万万个平行时空中，总会在时间线上发生这样那样的事，改变叙事的进程，让结局回归最后既定的事实。而我的勤耕不缀并没有对不起我的初心与抱负，那即使登不到山顶，也无妨和自己和解，流连于半山腰，欣赏独属于自己的那份风景吧。</p><p>时间是残忍的，听一百遍《反方向的钟》，也不能改变2018年10月20号rng的基地被g2推平的事实；把时针逆向拨一百圈，也无法阻止ame的水人在og高地反向波葬送lgd冠军梦。至少在时光机发明以前，你我都不能回溯到过往的某段时空，无论这段时空是像黄金一般令人神往的甜蜜的回忆，还是像石块一样令人不堪回首的苦涩曾经，你都只能驻足，观望，而做不到挽留或者扭转。</p><p>——那就放下它，继续自己本应该走完的旅程吧。</p><p>2023年6月10号的1点14分，这一刻，应该绝大多数高考生都已笔尖合盖，刀剑入鞘。愿各位圆梦理想的大学，也祝福大家都将高考作为旅途上别致的风景，在步入大学的校园后，依然乐观向前，依然相信明天和远方。<br>——“如果再也不能见到你，祝你早安，午安，晚安。”</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C26H52的新手村入门心得</title>
       <link href="/2023/01/02/1/"/>
       <url>/2023/01/02/1/</url>
       
-        <content type="html"><![CDATA[<p>失败总是贯穿人生始终，这就是人生</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;iostream&gt;using namespace std;int main(){    cout&lt;&lt;"Hello CTF"&lt;&lt;endl;    return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<p>失败总是贯穿人生始终，这就是人生</p><pre class="line-numbers language-C" data-language="C"><code class="language-C">#include&lt;iostream&gt;using namespace std;int main(){    cout&lt;&lt;"Hello CTF"&lt;&lt;endl;    return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
