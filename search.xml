@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Python函数的位置参数和关键词参数</title>
+      <link href="/2023/09/29/python-han-shu-de-wei-zhi-can-shu-he-guan-jian-ci-can-shu/"/>
+      <url>/2023/09/29/python-han-shu-de-wei-zhi-can-shu-he-guan-jian-ci-can-shu/</url>
+      
+        <content type="html"><![CDATA[<p>Python函数有两种参数：位置参数和关键词参数。位置参数可以不指定传入参数名，但是不能调换传参的先后顺序；关键词参数必须指定传入参数名，可以调换传参的先后顺序</p><p>比如：<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def register(Username,Password):    ...    register('C26H52','123456')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>这就是典型的位置传参，读取到的’C26H52’就是Username，’123456’就是Password<p></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def register(Username,Password):    ...    register(Password='123456',Username='C26H52')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这就是典型的关键词传参，根据参数名读取后’C26H52’作为Username传入，’123456’作为Password传入</p><p>Python参数中有两种分隔符：/和<em>，/分隔符之前传入的参数仅限位置参数，</em>分隔符之后传入的参数仅限关键词参数，这两个分隔符中间的参数是位置或关键词参数<br>譬如<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def register(Username,/,Password,*,Name):    ...    #按这样定义的函数，Username一定要位置传参，Name一定要关键词传参，Password作自由选择    register('C26H52','123456',Name='cjy') #正确示例    register(Username='C26H52',Password='123456','cjy') #错误示例，Username只能位置传参，Name只能关键词传参<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p><p>Python在函数定义的时候可以给参数设置默认值（default）<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def register(Username='C26H52',/,Password='123456',*,Name='cjy'):    ...        register() #Username='C26H52',Password='123456',Name='cjy'    register(Username='Q_T',Password='654321',Name='jb') #Username='Q_T',Password='654321',Name='jb'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p><p>如果给一个仅位置参数设定默认值，那么该参数以后所有的仅位置/位置或关键字参数都必须设置默认值<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def register(Username='C26H52',/,Password='123456',*,Name='cjy') #正确示例def register(Username='C26H52',/,Password,*,Name='cjy') #错误示例，由于Username有默认值，Password必须也要设置默认值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p></p><p><strong>defaults</strong>是函数的内置属性，function.<strong>defaults</strong>从左到右表示function函数非仅关键字参数的默认值（仅关键字参数的位置显示空白）<br>如<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def func1(a=1,b=2,c=3):    passdef func2(a=1,/,b=2,*,c=3):    passprint(func1.__defaults__) #(1,2,3)print(func2.__defaults__) #(1,2,)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p><p>而<strong>kwdefaults</strong>则是另一个内置属性，function.<strong>kwdefaults</strong>从左到右表示function函数仅关键字参数的默认值（以键值对的形式存储）<br>如<br></p><pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">def func1(a=1,b=2,c=3):    passdef func2(a=1,/,b=2,*,c=3):    passprint(func1.__defaults__) #Noneprint(func2.__defaults__) #{'c':3}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>高考</title>
       <link href="/2023/06/08/gao-kao/"/>
       <url>/2023/06/08/gao-kao/</url>
