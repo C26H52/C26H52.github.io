@@ -468,9 +468,9 @@
                     var typed = new Typed("#subtitle", {
                         strings: [ 
                             
-                                "从来没有真正的绝境, 只有心灵的迷途",
+                                "假如再也见不到你，祝你下午好，晚上好，晚安",
                             
-                                "Never really desperate, only the lost of the soul",
+                                "In case I don&#39;t see you,good afternoon,good evening,and good night",
                             
                         ],
                         startDelay: 300,
@@ -489,7 +489,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    var bannerUrl = "/medias/banner/" + 2 + '.jpg';
     $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
@@ -684,7 +684,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09"]
+            data: ["2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10"]
         },
         yAxis: {
             type: 'value',
@@ -694,7 +694,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,1,0,0,0,0,1,0,0,1],
+                data: [0,0,0,1,0,0,0,0,1,0,0,1,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
