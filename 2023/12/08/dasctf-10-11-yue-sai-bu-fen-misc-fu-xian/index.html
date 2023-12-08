@@ -4,8 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="musics, C26H52的博客">
-    <meta name="description" content="C26H52的博客">
+    <meta name="keywords" content="DASCTF 10&amp;11月赛部分misc复现, C26H52的博客">
+    <meta name="description" content="ai、流量包">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>musics | C26H52的博客</title>
+    <title>DASCTF 10&amp;11月赛部分misc复现 | C26H52的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -446,12 +446,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">musics</h1>
+                    <h1 class="description center-align post-title">DASCTF 10&amp;11月赛部分misc复现</h1>
                 </div>
             </div>
         </div>
@@ -473,12 +473,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/misc/">
+                                <span class="chip bg-color">misc</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/misc/" class="post-category">
+                                misc
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -487,7 +500,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-03
+                    2023-12-08
                 </div>
                 
 
@@ -511,7 +524,157 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="justpaint"><a href="#justpaint" class="headerlink" title="justpaint"></a>justpaint</h2><p>（DASCTF X CBCTF 10月月赛）FLAG被我弄丢了&gt;_&lt;不过，JBN应该记得，或许你能从他那得到一些线索。</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/19Iymf2mwak1PtSPyJGjZYg?pwd=DASC">https://pan.baidu.com/s/19Iymf2mwak1PtSPyJGjZYg?pwd=DASC</a> 提取码：DASC —来自百度网盘超级会员V5的分享</p>
+<hr>
+<p>ai题，附件包括train.py和jbn.pth，train.py文件内容如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> cv2
+
+
+<span class="token keyword">class</span> <span class="token class-name">JBN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>JBN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>main <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">452</span> <span class="token operator">*</span> <span class="token number">280</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Tanh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        img <span class="token operator">=</span> self<span class="token punctuation">.</span>main<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        img <span class="token operator">=</span> img<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">452</span><span class="token punctuation">,</span> <span class="token number">280</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> img
+
+
+<span class="token keyword">def</span> <span class="token function">watch_flag</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">'./data/data/flag.png'</span><span class="token punctuation">)</span>
+    gray_image <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>flag<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_BGR2GRAY<span class="token punctuation">)</span>
+    flag_tensor <span class="token operator">=</span> torch<span class="token punctuation">.</span>from_numpy<span class="token punctuation">(</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>gray_image<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    flag_tensor <span class="token operator">=</span> flag_tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    img_tensor <span class="token operator">=</span> img
+    flag_tensor <span class="token operator">=</span> flag_tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    img_tensor <span class="token operator">=</span> img_tensor<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    loss_fn <span class="token operator">=</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>MSELoss<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    loss <span class="token operator">=</span> loss_fn<span class="token punctuation">(</span>flag_tensor<span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> img_tensor<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> loss
+
+
+jbn <span class="token operator">=</span> JBN<span class="token punctuation">(</span><span class="token punctuation">)</span>
+g_optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>jbn<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+min_loss <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">'inf'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random_noise <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    jbn_img <span class="token operator">=</span> jbn<span class="token punctuation">(</span>random_noise<span class="token punctuation">)</span>
+    g_optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    g_loss <span class="token operator">=</span> watch_flag<span class="token punctuation">(</span>jbn_img<span class="token punctuation">)</span>
+    g_loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    g_optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> g_loss <span class="token operator">&lt;</span> min_loss<span class="token punctuation">:</span>
+            min_loss <span class="token operator">=</span> g_loss
+            torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>jbn<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'jbn.pth'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该程序是一个基本对抗网络生成算法模型，生成器（JBN）通过接受随机噪声作为输入生成图像，并通过watch_flag函数计算生成图像与flag图像之间的均方误差损失，将损失最小的模型保存至jbn.pth</p>
+<p>所以我们只要将jbn.pth重新生成回img图像即可得到flag图像</p>
+<p>exp.py如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> cv2
+
+<span class="token comment"># 定义JBN模型</span>
+<span class="token keyword">class</span> <span class="token class-name">JBN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>JBN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>main <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sequential<span class="token punctuation">(</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">452</span> <span class="token operator">*</span> <span class="token number">280</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            nn<span class="token punctuation">.</span>Tanh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        img <span class="token operator">=</span> self<span class="token punctuation">.</span>main<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        img <span class="token operator">=</span> img<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">452</span><span class="token punctuation">,</span> <span class="token number">280</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> img
+
+<span class="token comment"># 加载JBN模型</span>
+jbn <span class="token operator">=</span> JBN<span class="token punctuation">(</span><span class="token punctuation">)</span>
+jbn<span class="token punctuation">.</span>load_state_dict<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">'jbn.pth'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+jbn<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 设置模型为评估模式，不进行梯度计算</span>
+
+<span class="token comment"># 生成随机噪声</span>
+random_noise <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 使用生成器生成图像</span>
+<span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    generated_img <span class="token operator">=</span> jbn<span class="token punctuation">(</span>random_noise<span class="token punctuation">)</span>
+
+<span class="token comment"># 转换为numpy数组</span>
+generated_img_np <span class="token operator">=</span> generated_img<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 保存生成的图像为文件</span>
+cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation">(</span><span class="token string">'generated_image.png'</span><span class="token punctuation">,</span> generated_img_np <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span>  <span class="token comment"># 乘以255以还原到0-255的范围</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Generated image saved as generated_image.png"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行后得到generated_image.png</p>
+<p><img src="https://s2.loli.net/2023/12/08/XNQq1adj9FBZ5xH.png" alt=""></p>
+<p>上下旋转、左右镜像后得到flag</p>
+<p><img src="https://s2.loli.net/2023/12/08/497gdBvNLGHcDpt.png" alt=""></p>
+<hr>
+<h3 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h3><h5 id="Q1：什么是epoch？"><a href="#Q1：什么是epoch？" class="headerlink" title="Q1：什么是epoch？"></a>Q1：什么是epoch？</h5><p>一个epoch表示训练集被模型完整训练过一次，包含以下四个步骤：</p>
+<p>①前向传播：将训练集样本输入模型中，计算得到模型输出</p>
+<p>②计算损失：计算模型输出和真实标签之间的损失</p>
+<p>③反向传播：根据损失计算梯度，并将梯度传播回模型的参数</p>
+<p>④参数更新：使用优化算法更新模型的参数，以减少损失</p>
+<p>在justpaint中，</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> epoch <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>表示该训练过程经历了10次epoch，每次训练过程都循环生成随机噪声-&gt;通过JBN生成图像-&gt;计算损失-&gt;反向传播-&gt;更新JBN参数的步骤</p>
+<h5 id="Q2：什么是学习率？"><a href="#Q2：什么是学习率？" class="headerlink" title="Q2：什么是学习率？"></a>Q2：什么是学习率？</h5><p>学习率是优化算法中的一个超参数（AI中的参数自动生成，超参数则需手动控制），控制每次参数更新的步长，在justpaint中，</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">g_optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>jbn<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数通过Adam优化器，以0.001的学习率进行调整</p>
+<hr>
+<h2 id="IceTea"><a href="#IceTea" class="headerlink" title="IceTea"></a>IceTea</h2><p>（DAS X 0psu3 11月月赛）小黑喜欢喝冰红茶，被出题人发现后每天都说他喝屌丝饮料，结果小黑发现出题人也喝冰红茶，然后就往出题人的冰红茶里加了点料。</p>
+<p>  <a href="DASCTF-10-11月赛部分misc复现\IceTea.cap">IceTea.cap</a> </p>
+<hr>
+<p>流量包题，首先按时间顺序追踪第一个HTTP流，发现一串Hex加密后的密文（黑色括号起始）</p>
+<p><img src="https://s2.loli.net/2023/12/08/AxD28Og76eWLF5n.png" alt=""></p>
+<p>遂拖入CyberChef解密，得到一个elf文件，导出</p>
+<p><img src="https://s2.loli.net/2023/12/08/1GtYUi6N3rPsDMj.png" alt=""></p>
+<p>导出后拖入IDA，发现存在upx加壳，用ExeinfoPE也发现有upx壳，于是进行机脱，再次拖入IDA后Shift+F12得到base64表（最下面一行）</p>
+<p><img src="https://s2.loli.net/2023/12/08/imDMbLUOGpcZ2Yy.png" alt=""></p>
+<p>按时间顺序追踪第三个HTTP流，发现一串base64加密后的密文，解密后得到一串指令</p>
+<p>cd “/www/wwwroot/DAS202310.com”;./ezbase e flag.txt IceTea.txt;echo 27d667b0c949;pwd;echo f0e52b6ed</p>
+<p>（每个HTTP流内容前URL解码后得到cmd=@eval(@base64_decode($_POST[‘k59c2ae7730483’]))，判断可能是蚁剑流量包，而蚁剑流量base64解密前要舍弃前两位字符）</p>
+<p>可见在/www/wwwroot/DAS202310.com目录下通过ezbase将flag.txt加密成了IceTea.txt</p>
+<p><img src="https://s2.loli.net/2023/12/08/kuEJlx8eLydDY9p.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/QdwLACeUsnZc8Na.png" alt=""></p>
+<p>接下来追踪第四个HTTP流，同样发现一串base64加密后的密文并与第三个HTTP流中发现的相似，解密后得到另一串指令</p>
+<p>cd “/www/wwwroot/DAS202310.com”;cat IceTea.txt;echo 27d667b0c949;pwd;echo f0e52b6ed</p>
+<p>可见在/www/wwwroot/DAS202310.com目录下打开了IceTea.txt，从第三个HTTP流中我们知道IceTea.txt是flag.txt加密后的密文</p>
+<p><img src="https://s2.loli.net/2023/12/08/tqYpJUaOhiGN3EM.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/5AFfcIm2jXpoR6C.png" alt=""></p>
+<p>看一下Response部分对应的明文</p>
+<p><img src="https://s2.loli.net/2023/12/08/4moi3hnBGcy5Os8.png" alt=""></p>
+<p>得到reftqRrg4QB9zvZQzwf50xn51CZQxSf51gZPzxj5zhjF1CI75qE=应该是ezbase加密后的IceTea.txt内容</p>
+<p>用第一个HTTP流中得到的base64表解密，得到flag</p>
+<p><img src="https://s2.loli.net/2023/12/08/1XUqM5TKYlVRyxz.png" alt=""></p>
+<hr>
+<h3 id="彩蛋-1"><a href="#彩蛋-1" class="headerlink" title="彩蛋"></a>彩蛋</h3><p>如果你像我一样蠢，对第一个流量包进行Hex解密时把不是Hex密文的内容也复制进CyberChef的话，你会得到一个IDA检测得出upx壳、ExeinfoPE也检测得出upx壳、但脱壳工具坚持认为加的不是upx壳的elf</p>
+<p><img src="https://s2.loli.net/2023/12/08/ard32xnfCN6sGWq.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/R1spGUuw9jVNcPt.png" alt=""></p>
+<hr>
+
                 
             </div>
             <hr/>
@@ -537,7 +700,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://c26h52.github.io/musics/index.html">https://c26h52.github.io/musics/index.html</a>
+                    <a href="https://c26h52.github.io/2023/12/08/dasctf-10-11-yue-sai-bu-fen-misc-fu-xian/">https://c26h52.github.io/2023/12/08/dasctf-10-11-yue-sai-bu-fen-misc-fu-xian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -574,7 +737,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/misc/">
+                                    <span class="chip bg-color">misc</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -656,34 +823,46 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/musics/index.html">
+                <a href="/2023/12/08/dasctf-10-11-yue-sai-bu-fen-misc-fu-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="musics">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="DASCTF 10&amp;11月赛部分misc复现">
                         
-                        <span class="card-title">musics</span>
+                        <span class="card-title">DASCTF 10&amp;11月赛部分misc复现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            ai、流量包
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-08
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            C26H52
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/misc/" class="post-category">
+                                    misc
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/misc/">
+                        <span class="chip bg-color">misc</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -691,16 +870,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/musics/index.html">
+                <a href="/2023/11/24/peng-cheng-bei-jue-sai-you-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="musics">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="鹏程杯决赛游记">
                         
-                        <span class="card-title">musics</span>
+                        <span class="card-title">鹏程杯决赛游记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -711,17 +890,28 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            C26H52
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B8%B8%E8%AE%B0/">
+                        <span class="chip bg-color">游记</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -842,6 +1032,13 @@
 
 </main>
 
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
