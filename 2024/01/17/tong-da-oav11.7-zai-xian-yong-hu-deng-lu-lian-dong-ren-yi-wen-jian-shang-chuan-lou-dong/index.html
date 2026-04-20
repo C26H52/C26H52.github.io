@@ -56,8 +56,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="C26H52的博客" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="alternate" href="/atom.xml" title="C26H52的博客" type="application/atom+xml">
 </head>
 
 
@@ -570,11 +570,11 @@
 <p>而如果在线人员Session ID为空且相应PHPSESSID的cookie键为空，或LOGIN_USER_ID与LOGIN_UID至少一个SESSION键为空，则执行relogin()函数，在页面上显示RELOGIN</p>
 <p>所以当我们带着isAvatar参数为1，P_VER参数为0访问url/mobile/auth_mobi.php?isAvatar=1&amp;uid=*&amp;P_VER=0，可以得到对应uid账户的在线情况与session值</p>
 <p>而通达OA的admin账户UID为1，故当我们访问url/mobile/auth_mobi.php?isAvatar=1&amp;uid=1&amp;P_VER=0时，如果显示RELOGIN，代表admin账户离线</p>
-<p><img src="https://s2.loli.net/2024/01/24/27nfLBD1TyYFj8M.png" alt=""></p>
+<p><img src="https://s2.loli.net/2024/01/24/27nfLBD1TyYFj8M.png" alt></p>
 <p>如果显示为空，代表admin账户在线</p>
-<p><img src="https://s2.loli.net/2024/01/24/sLauTU6SfqoDkYm.png" alt=""></p>
+<p><img src="https://s2.loli.net/2024/01/24/sLauTU6SfqoDkYm.png" alt></p>
 <p>此时查询请求响应中的Set-Cookie参数，其中的PHPSESSID即为admin账户的Session ID</p>
-<p><img src="https://s2.loli.net/2024/01/24/aDJNjqAkoLBIRFt.png" alt=""></p>
+<p><img src="https://s2.loli.net/2024/01/24/aDJNjqAkoLBIRFt.png" alt></p>
 <p>在发送POST请求时将该Session ID以PHPSESSID形式携带即可实现admin用户登录</p>
 <hr>
 <h4 id="文件上传利用"><a href="#文件上传利用" class="headerlink" title="文件上传利用"></a>文件上传利用</h4><p>只是登入admin账户对我们还不够，我们要实现文件上传利用，由于通达OA对上传文件限制比较严格，因此我们考虑通过上传.user.ini文件实现php包含木马</p>
@@ -1249,7 +1249,7 @@ Content-Disposition: form-data; name="submit"
             Copyright&nbsp;&copy;
             <span id="sitetime"></span>
             
-                <span id="year">2019-2024</span>
+                <span id="year">2019-2026</span>
             
             <a href="/about" target="_blank">C26H52</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>

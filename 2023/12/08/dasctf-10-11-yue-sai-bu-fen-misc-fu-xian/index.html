@@ -56,8 +56,8 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="C26H52的博客" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="alternate" href="/atom.xml" title="C26H52的博客" type="application/atom+xml">
 </head>
 
 
@@ -629,9 +629,9 @@ generated_img_np <span class="token operator">=</span> generated_img<span class=
 cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation">(</span><span class="token string">'generated_image.png'</span><span class="token punctuation">,</span> generated_img_np <span class="token operator">*</span> <span class="token number">255.0</span><span class="token punctuation">)</span>  <span class="token comment"># 乘以255以还原到0-255的范围</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Generated image saved as generated_image.png"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行后得到generated_image.png</p>
-<p><img src="https://s2.loli.net/2023/12/08/XNQq1adj9FBZ5xH.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/XNQq1adj9FBZ5xH.png" alt></p>
 <p>上下旋转、左右镜像后得到flag</p>
-<p><img src="https://s2.loli.net/2023/12/08/497gdBvNLGHcDpt.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/497gdBvNLGHcDpt.png" alt></p>
 <hr>
 <h3 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h3><h5 id="Q1：什么是epoch？"><a href="#Q1：什么是epoch？" class="headerlink" title="Q1：什么是epoch？"></a>Q1：什么是epoch？</h5><p>一个epoch表示训练集被模型完整训练过一次，包含以下四个步骤：</p>
 <p>①前向传播：将训练集样本输入模型中，计算得到模型输出</p>
@@ -649,31 +649,31 @@ cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation
 <p>  <a href="DASCTF-10-11月赛部分misc复现\IceTea.cap">IceTea.cap</a> </p>
 <hr>
 <p>流量包题，首先按时间顺序追踪第一个HTTP流，发现一串Hex加密后的密文（黑色括号起始）</p>
-<p><img src="https://s2.loli.net/2023/12/08/AxD28Og76eWLF5n.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/AxD28Og76eWLF5n.png" alt></p>
 <p>遂拖入CyberChef解密，得到一个elf文件，导出</p>
-<p><img src="https://s2.loli.net/2023/12/08/1GtYUi6N3rPsDMj.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/1GtYUi6N3rPsDMj.png" alt></p>
 <p>导出后拖入IDA，发现存在upx加壳，用ExeinfoPE也发现有upx壳，于是进行机脱，再次拖入IDA后Shift+F12得到base64表（最下面一行）</p>
-<p><img src="https://s2.loli.net/2023/12/08/imDMbLUOGpcZ2Yy.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/imDMbLUOGpcZ2Yy.png" alt></p>
 <p>按时间顺序追踪第三个HTTP流，发现一串base64加密后的密文，解密后得到一串指令</p>
 <p>cd “/www/wwwroot/DAS202310.com”;./ezbase e flag.txt IceTea.txt;echo 27d667b0c949;pwd;echo f0e52b6ed</p>
 <p>（每个HTTP流内容前URL解码后得到cmd=@eval(@base64_decode($_POST[‘k59c2ae7730483’]))，判断可能是蚁剑流量包，而蚁剑流量base64解密前要舍弃前两位字符）</p>
 <p>可见在/www/wwwroot/DAS202310.com目录下通过ezbase将flag.txt加密成了IceTea.txt</p>
-<p><img src="https://s2.loli.net/2023/12/08/kuEJlx8eLydDY9p.png" alt=""></p>
-<p><img src="https://s2.loli.net/2023/12/08/QdwLACeUsnZc8Na.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/kuEJlx8eLydDY9p.png" alt></p>
+<p><img src="https://s2.loli.net/2023/12/08/QdwLACeUsnZc8Na.png" alt></p>
 <p>接下来追踪第四个HTTP流，同样发现一串base64加密后的密文并与第三个HTTP流中发现的相似，解密后得到另一串指令</p>
 <p>cd “/www/wwwroot/DAS202310.com”;cat IceTea.txt;echo 27d667b0c949;pwd;echo f0e52b6ed</p>
 <p>可见在/www/wwwroot/DAS202310.com目录下打开了IceTea.txt，从第三个HTTP流中我们知道IceTea.txt是flag.txt加密后的密文</p>
-<p><img src="https://s2.loli.net/2023/12/08/tqYpJUaOhiGN3EM.png" alt=""></p>
-<p><img src="https://s2.loli.net/2023/12/08/5AFfcIm2jXpoR6C.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/tqYpJUaOhiGN3EM.png" alt></p>
+<p><img src="https://s2.loli.net/2023/12/08/5AFfcIm2jXpoR6C.png" alt></p>
 <p>看一下Response部分对应的明文</p>
-<p><img src="https://s2.loli.net/2023/12/08/4moi3hnBGcy5Os8.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/4moi3hnBGcy5Os8.png" alt></p>
 <p>得到reftqRrg4QB9zvZQzwf50xn51CZQxSf51gZPzxj5zhjF1CI75qE=应该是ezbase加密后的IceTea.txt内容</p>
 <p>用第一个HTTP流中得到的base64表解密，得到flag</p>
-<p><img src="https://s2.loli.net/2023/12/08/1XUqM5TKYlVRyxz.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/1XUqM5TKYlVRyxz.png" alt></p>
 <hr>
 <h3 id="彩蛋-1"><a href="#彩蛋-1" class="headerlink" title="彩蛋"></a>彩蛋</h3><p>如果你像我一样蠢，对第一个流量包进行Hex解密时把不是Hex密文的内容也复制进CyberChef的话，你会得到一个IDA检测得出upx壳、ExeinfoPE也检测得出upx壳、但脱壳工具坚持认为加的不是upx壳的elf</p>
-<p><img src="https://s2.loli.net/2023/12/08/ard32xnfCN6sGWq.png" alt=""></p>
-<p><img src="https://s2.loli.net/2023/12/08/R1spGUuw9jVNcPt.png" alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/08/ard32xnfCN6sGWq.png" alt></p>
+<p><img src="https://s2.loli.net/2023/12/08/R1spGUuw9jVNcPt.png" alt></p>
 <hr>
 
                 
@@ -1104,7 +1104,7 @@ cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation
             Copyright&nbsp;&copy;
             <span id="sitetime"></span>
             
-                <span id="year">2019-2024</span>
+                <span id="year">2019-2026</span>
             
             <a href="/about" target="_blank">C26H52</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
