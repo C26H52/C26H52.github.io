@@ -542,13 +542,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>本项目参考了 <a target="_blank" rel="noopener" href="https://github.com/Wormwaker">Wormwaker</a> 的 <strong>Jackal Client</strong></p>
+<p>本项目参考了 <a target="_blank" rel="noopener" href="https://github.com/noexcept2005">noexcept2005 (Wormwaker)</a> 的 <strong>Jackal Client</strong></p>
 </blockquote>
 <p>众所周知，B站的个性签名是静态的，大多数时候内容只随用户偶尔更新而改变。而Steam好友界面的游戏状态是动态的——你经常能看见右下角时不时弹出来“XXX 正在玩：XXX”。</p>
 <p>那有没有办法让B站签名像Steam游戏状态一样动态展现一些东西，比如正在玩的游戏呢？</p>
 <p>这就是今天这个玩具做的事情。</p>
 <p>这个玩具由三个模块组合而成，实现了从本机读取正在游玩的Steam游戏，到将这个游戏更新到B站的签名中去的过程、</p>
-<p><img src="https://files.seeusercontent.com/2026/07/01/3hEm/pasted-image-1782930657098.webp" alt=""></p>
+<p><img src="https://files.seeusercontent.com/2026/07/01/3hEm/pasted-image-1782930657098.webp" alt></p>
 <p>下面会依次讲解每个模块的思路和实现逻辑</p>
 <hr>
 <h2 id="从注册表里获取SteamAppID"><a href="#从注册表里获取SteamAppID" class="headerlink" title="从注册表里获取SteamAppID"></a>从注册表里获取SteamAppID</h2><p>Steam 在运行游戏时会往 Windows 注册表里写一个值：</p>
@@ -570,7 +570,7 @@
         <span class="token keyword">return</span> <span class="token boolean">None</span>  
     <span class="token keyword">except</span> FileNotFoundError<span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token boolean">None</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://files.seeusercontent.com/2026/07/06/jkT6/pasted-image-1783353072105.webp" alt=""></p>
+<p><img src="https://files.seeusercontent.com/2026/07/06/jkT6/pasted-image-1783353072105.webp" alt></p>
 <h2 id="AppID-变游戏名"><a href="#AppID-变游戏名" class="headerlink" title="AppID 变游戏名"></a>AppID 变游戏名</h2><p>拿到<code>App ID</code>还不够，你不能把一串数字贴签名上，你得把它翻译成人类能读的游戏名</p>
 <p>Steam 把已安装游戏的名字也写进了注册表：</p>
 <pre class="line-numbers language-none"><code class="language-none">HKCU\Software\Valve\Steam\Apps\{AppID}\Name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -595,7 +595,7 @@
 <h2 id="把游戏名贴到签名上"><a href="#把游戏名贴到签名上" class="headerlink" title="把游戏名贴到签名上"></a>把游戏名贴到签名上</h2><p>B站有一个接口可以修改当前登录用户的签名：</p>
 <pre class="line-numbers language-none"><code class="language-none">POST https://api.bilibili.com/x/member/web/sign/update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>需要带上 <code>bili_jct</code> 和 <code>SESSDATA</code>，这两个都可以从浏览器 Cookie 里获取。</p>
-<p><img src="https://files.seeusercontent.com/2026/07/06/oa5P/pasted-image-1783353235429.webp" alt=""></p>
+<p><img src="https://files.seeusercontent.com/2026/07/06/oa5P/pasted-image-1783353235429.webp" alt></p>
 <p>签名的格式设计成换行分隔，上面是正在玩的游戏名，下面是原本的签名</p>
 <pre class="line-numbers language-none"><code class="language-none">正在玩：Wallpaper Engine
 音为源于真心<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -691,7 +691,7 @@ WshShell.Run "pythonw.exe """ &amp; scriptDir &amp; "\main.py""", 0, False<span 
          new_sessdata <span class="token operator">=</span> field<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">"SESSDATA="</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
      <span class="token keyword">elif</span> field<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"bili_jct="</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
          new_bili_jct <span class="token operator">=</span> field<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">"bili_jct="</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://files.seeusercontent.com/2026/07/07/Ctz2/pasted-image-1783438075907.webp" alt=""></p>
+<p><img src="https://files.seeusercontent.com/2026/07/07/Ctz2/pasted-image-1783438075907.webp" alt></p>
 <p><img src="https://files.seeusercontent.com/2026/07/07/4utT/pasted-image-1783438386445.webp" alt="PC端签名换行显示有点问题"></p>
 
                 
