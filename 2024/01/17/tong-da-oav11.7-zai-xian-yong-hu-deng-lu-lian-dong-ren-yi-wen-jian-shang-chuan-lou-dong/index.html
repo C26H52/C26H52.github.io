@@ -570,11 +570,11 @@
 <p>而如果在线人员Session ID为空且相应PHPSESSID的cookie键为空，或LOGIN_USER_ID与LOGIN_UID至少一个SESSION键为空，则执行relogin()函数，在页面上显示RELOGIN</p>
 <p>所以当我们带着isAvatar参数为1，P_VER参数为0访问url/mobile/auth_mobi.php?isAvatar=1&amp;uid=*&amp;P_VER=0，可以得到对应uid账户的在线情况与session值</p>
 <p>而通达OA的admin账户UID为1，故当我们访问url/mobile/auth_mobi.php?isAvatar=1&amp;uid=1&amp;P_VER=0时，如果显示RELOGIN，代表admin账户离线</p>
-<p><img src="https://s2.loli.net/2024/01/24/27nfLBD1TyYFj8M.png" alt></p>
+<p><img src="https://s2.loli.net/2024/01/24/27nfLBD1TyYFj8M.png" alt=""></p>
 <p>如果显示为空，代表admin账户在线</p>
-<p><img src="https://s2.loli.net/2024/01/24/sLauTU6SfqoDkYm.png" alt></p>
+<p><img src="https://s2.loli.net/2024/01/24/sLauTU6SfqoDkYm.png" alt=""></p>
 <p>此时查询请求响应中的Set-Cookie参数，其中的PHPSESSID即为admin账户的Session ID</p>
-<p><img src="https://s2.loli.net/2024/01/24/aDJNjqAkoLBIRFt.png" alt></p>
+<p><img src="https://s2.loli.net/2024/01/24/aDJNjqAkoLBIRFt.png" alt=""></p>
 <p>在发送POST请求时将该Session ID以PHPSESSID形式携带即可实现admin用户登录</p>
 <hr>
 <h4 id="文件上传利用"><a href="#文件上传利用" class="headerlink" title="文件上传利用"></a>文件上传利用</h4><p>只是登入admin账户对我们还不够，我们要实现文件上传利用，由于通达OA对上传文件限制比较严格，因此我们考虑通过上传.user.ini文件实现php包含木马</p>
@@ -1554,9 +1554,9 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7,"lazyload":{"enable":true}}});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7,"lazyload":{"enable":true}}});</script></body>
 
 </html>
